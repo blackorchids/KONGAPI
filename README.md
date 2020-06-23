@@ -1,4 +1,4 @@
-# KONGAPI
+# KONGAPI with curl
 
 	127.0.0.1:8001 = Kong Server
 	Basic Expose your services
