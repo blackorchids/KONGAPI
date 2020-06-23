@@ -25,5 +25,16 @@
 	Add Route
 	  #set paths only "/"
 	- curl http://127.0.0.1:8001/services/httpbin{name,id}/routes -d path[]=/
+	  #set hosts only "example.com"
+	- curl -s http://127.0.0.1:8001/services/app/routes -d host[]=example.com | jq
+	  #set hosts "example.com" and paths "/v1"
+	- curl -s http://127.0.0.1:8001/services/app/routes -d paths[]=/v1 -d hosts[]=example.com | jq
+	  #set multiple paths
+	- curl http://127.0.0.1:8001/services/app/routes -d paths[]=/ -d paths[]=/v1 | jq
+	  #set multiple hosts
+	- curl http://127.0.0.1:8001/services/app/routes -d hosts[]=example.com -d hosts[]=www.example.com | jq
+	  #set multiple hosts, paths
+	- curl http://127.0.0.1:8001/services/app/routes -d paths[]=/ -d paths[]=/v1 \
+	  	-d hosts[]=example.com -d hosts[]=www.example.com | jq
 	Delete Route
 	- curl -s http://127.0.0.1:8001/services/app/routes/{name,id} -i -XDELETE
