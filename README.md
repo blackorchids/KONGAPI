@@ -20,7 +20,10 @@
 	
 	
 	List Route
-	- curl -s http://127.0.0.1:8001/services/app/routes | jq 
-	
+	- curl -s http://127.0.0.1:8001/services/app{name,id}/routes | jq 
+	- curl -s http://127.0.0.1:8001/routes | jq
 	Add Route
-	- curl http://127.0.0.1:8001/services/httpbin/routes -d path[]=/
+	  #set paths only "/"
+	- curl http://127.0.0.1:8001/services/httpbin{name,id}/routes -d path[]=/
+	Delete Route
+	- curl -s http://127.0.0.1:8001/services/app/routes/{name,id} -i -XDELETE
