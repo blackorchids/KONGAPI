@@ -6,7 +6,7 @@
 	- curl http://127.0.0.1:8001/services/httpbin/routes -d path[]=/
 	- curl http://127.0.0.1:8001/header
 	
-	
+# SERVICES	
 	Add Service
 	- curl http://127.0.0.1:8001/services -d name=httpbin -d url=http://httpbin.org
 	List Service
@@ -18,7 +18,7 @@
 	- curl http://127.0.0.1:8001/services/app -XDELETE | jq
 	
 	
-	
+# ROUTES
 	List Route
 	- curl -s http://127.0.0.1:8001/services/app{name,id}/routes | jq 
 	- curl -s http://127.0.0.1:8001/routes | jq
