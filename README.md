@@ -52,4 +52,5 @@ Enable JWT Plugins
 	- curl -s http://127.0.0.1:8001/consumers -d username=kong | jq
 	- curl -s http://127.0.0.1:8001/consumers/kong/jwt -XPOST | jq
 	JWT.io Debugger for finding Bearer
+		https://jwt.io/
 	- curl -w "\n" -s http://127.0.0.1/headers -i -H 'Authorization: Bearer xxxxxxx'
