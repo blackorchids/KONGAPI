@@ -40,3 +40,16 @@
 	- curl -s http://127.0.0.1:8001/routes/{id} -XPATCH -d name=example-route | jq
 	Delete Route
 	- curl -s http://127.0.0.1:8001/services/app/routes/{name,id} -i -XDELETE
+
+
+# Authentication
+Enable JWT Plugins
+	- curl http://127.0.0.1:8001/services -d name=httpbin -d url=http://httpbin.org | jq
+	- curl http://127.0.0.1:8001/services/httpbin/routes -d paths[]=/ | jq
+	- curl -s http://127.0.0.1:8001/services/httpbin/plugins -d name=jwt | jq
+	- curl -w "\n" -s http://127.0.0.1 -i
+	- curl -s http://127.0.0.1:8001/consumers/kong/jwt -XPOST | jq
+	- curl -s http://127.0.0.1:8001/consumers -d username=kong | jq
+	- curl -s http://127.0.0.1:8001/consumers/kong/jwt -XPOST | jq
+	JWT.io Debugger for finding Bearer
+	- curl -w "\n" -s http://127.0.0.1/headers -i -H 'Authorization: Bearer xxxxxxx'
